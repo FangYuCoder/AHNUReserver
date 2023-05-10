@@ -52,7 +52,7 @@
         "dayet": " 22:00"
     }
 	```
-3. 修改```  WEIXIN.json  ```的配置，该文件主要是关于微信推送信息的配置，根据下述指导填入你的信息（把```  xxx  ```替换为你自己的信息）
+3. 修改```  WEIXIN.json  ```的配置，该文件主要是关于微信推送信息的配置，根据下述指导填入你的信息（把```  xxx  ```替换为你自己的信息，请注意时间前有空格，而且请按照两位数的格式输入）
 	```json
 	{
         # 应用token（获取请看后文）
@@ -70,7 +70,7 @@
         "account": "xxx",
         "password": "xxx",
         "sid": "xxx",
-        "dayst": " 14:40", 
+        "dayst": " 08:40", 
         "dayet": " 22:00"
     }
 	```
@@ -105,6 +105,9 @@
 * 在微信中打开链接 ``` https://wxpusher.zjiecode.com/wxuser/?type=1&id=44774#/follow ```
 * appToken填入```  AT_Cxj40nGcDr3fgjLe7oDlzyzE2EuITmWX  ```
 * UID获取方式和前面说的一样
+
+#### 消息显示
+![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/gongzonghao2.png)
     
 
 ### Window上定时任务
