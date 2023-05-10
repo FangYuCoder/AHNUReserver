@@ -107,7 +107,7 @@
 * UID获取方式和前面说的一样
 
 #### 消息显示
-![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/gongzonghao2.png)
+![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/xinxineir.png)
     
 
 ### Window上定时任务
