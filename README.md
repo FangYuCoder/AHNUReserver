@@ -93,11 +93,11 @@
 #### 1. 创建自己的应用，获取```  appToken  ```和```  uids  ```
 * 进入此[网站](https://wxpusher.dingliqc.com/docs/#/?apptokenid=%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%b8%94%e5%88%9b%e5%bb%ba%e5%ba%94%e7%94%a8&id=%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%b8%94%e5%88%9b%e5%bb%ba%e5%ba%94%e7%94%a8)根据指导创建应用并得到 ``` appToken```
 * 微信扫码订阅应用
-![本地路径](.\\img/wxpusher.png)
+![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/wxpusher.png)
 
 * 在WxPusher消息推送平台微信公众号内获取UID
-![本地路径](.\\img/gongzonghao1.png)
-![本地路径](.\\img/gongzonghao2.png)
+![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/gongzonghao1.png)
+![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/gongzonghao2.png)
 
 
 #### 2. 使用我创建的应用，获取```  appToken  ```和```  uids  ```
