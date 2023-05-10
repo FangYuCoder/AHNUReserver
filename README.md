@@ -10,7 +10,7 @@
 > * 修改了当该预约位置冲突时，无法预约下一个位置的BUG，本项目如果所预约位置与他人有冲突，会自动预约编号的下一个位置
 > * 请注意上文的编号不是nskxxxx的编号，而是座位信息在传输中的编号，由于图书馆座位编号有些小小的混乱，所以可能会让预约位置和设置位置离得比较远，请在微信中及时查看
 
-### 项目文件说明
+### 项目文件说明 
 * Reserve.py 主要程序
 * SeatReservationINFO.json 座位信息配置程序
 * WEIXIN.json 微信推送配置
@@ -112,7 +112,7 @@
 2. ``` 关键说明 ```
 > 1. 图中的程序或脚本选项选择下载文件中的``` startup.bat ```
 > 2. 起始于参数是``` startup.bat ```保存的目录
-3. ![本地路径](.\\img/dingshirenwu.png)
+3. ![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/dingshirenwu.png)
 
 
 ### 使用说明
