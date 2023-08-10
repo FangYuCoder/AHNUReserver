@@ -8,7 +8,7 @@ import time
 from wxpusher import WxPusher
 from GetAndSend import GetSend
 # wxpusher微信推送程序
-appToken = "AT_1YFc0dX3P53PKGOsUua6hf5b59ETYdDL"
+appToken = ""
 
 TOMORROW = str(datetime.date.today() + datetime.timedelta(days=1))
 fileloc = './infos/log.txt'
