@@ -8,7 +8,7 @@ import time
 from wxpusher import WxPusher
 from GetAndSend import GetSend
 # wxpusher微信推送程序
-appToken = ""
+appToken = "AT_1YFc0dX3P53PKGOsUua6hf5b59ETYdDL"
 
 TOMORROW = str(datetime.date.today() + datetime.timedelta(days=1))
 fileloc = './infos/log.txt'
@@ -197,13 +197,7 @@ class WINXIN:
         self.INFO = kwargs
 
     def send(self):
-        # 推送内容
-        if self.INFO['account'] == '20112001120':
-            nickname = '丘~预约成功！'
-        elif self.INFO['account'] == '20111304054':
-            nickname = '超超~预约成功！'
-        else:
-            nickname = self.INFO['account']
+        nickname = self.INFO['account']
         # 座位号
         seatid = self.INFO['sid']
 
@@ -237,12 +231,12 @@ if __name__ == '__main__':
         logging.error('Non-booking code section, daily push message error, reason unknown!')
 
     # 预约部分
-    randSleep(120, 300)
+    randSleep(120, 240)
     clients = getClients(client_path)
     try:
         for i in range(len(clients)):
             try:
-                randSleep(120, 180)
+                randSleep(60, 120)
                 reserve = Reserve(**clients[i])
                 reserve.reserve()
             except:
