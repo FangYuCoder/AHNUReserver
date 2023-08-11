@@ -22,13 +22,28 @@ headers = {
 
 
 class GetSend():
+    def getYiyan(self):
+        try:
+            # 一言
+            content_url = f' https://api.oick.cn/yiyan/api.php'
+            content1 = eval(requests.get(content_url).text)
+            # 语录
+            content_url = f' https://api.oick.cn/yulu/api.php'
+            content2 = eval(requests.get(content_url).text)
+            # 毒鸡汤
+            content_url = f' https://api.oick.cn/dutang/api.php'
+            content3 = eval(requests.get(content_url).text)
+            return "一言：" + content1 + "\n" + "语录：" + content2 + "\n" + "毒鸡汤：" + content3 + "\n"
+        except:
+            return "每日一言获取失败"
+
     def getSentence(self):
         try:
             with open('./infos/EnglishContent.json', 'r', encoding='utf-8') as f:
                 sentences = json.load(f)
             ran_sentence = random.randint(0, len(sentences) - 1)
             sentence = sentences[ran_sentence]
-            return '每日名言：' + sentence
+            return '每日名言：' + sentence+ "\n"
         except:
             return '每日名言获取失败'
 
@@ -41,7 +56,7 @@ class GetSend():
             if res_data['code'] == 1:  # 判断请求是否成功，具体根据返回数据格式进行调整
                 text = res_data['data'][0]
                 content = f'历史上的今天：\n{text["year"]} 年 {text["month"]} 月 {text["day"]} 日 {text["title"]}。'
-                return content
+                return content+ "\n"
         except:
             return '历史上的今天获取失败'
 
@@ -55,7 +70,7 @@ class GetSend():
                 mes = res_data['data']
                 content = f'{mes["address"]} 当前气温{mes["temp"]} 天气{mes["weather"]} ' \
                           f'{mes["windDirection"]}风{mes["windPower"]} 空气湿度{mes["humidity"]}'
-                return content
+                return content+ "\n"
         except:
             return '今日天气获取失败'
 
@@ -71,7 +86,7 @@ class GetSend():
                 mes = res_data['data']
                 content = f'今天是{mes["yearTips"]}年 {mes["lunarCalendar"]} \n忌：{mes["avoid"]}\n宜：{mes["suit"]}\n' \
                           f'阳历今年第{mes["dayOfYear"]}天，第{mes["weekOfYear"]}周'
-                return content
+                return content+ "\n"
         except:
             return '今日万年历获取失败'
 
@@ -110,25 +125,22 @@ class GetSend():
                         for item in detail_data['data']["items"]:
                             if item["type"] == "text":
                                 content += item["content"] + '\n'
-                return content
+                return content+ "\n"
         except:
             return '每日新闻获取失败'
 
     def summary(self, uids=our_uids):
         try:
-            sentence = self.getSentence()  # 获取每日一句
+            sentence = self.getYiyan()  # 获取每日一句
             history = self.getHistory()  # 获取历史上的今天
             # 获取今日天气
             weather = self.getWeather('芜湖市')
-            if len(uids) == 2:
-                weather2 = self.getWeather('翁源')
-                weather = weather + '\n' + weather2
             # 获取万年历
             calendar = self.getCalendar()
             # 获取今日新闻
             news = self.getNews()
             # 汇总
-            content = f'{sentence}\n\n{calendar} \n\n{weather}\n\n{history}\n\n{news}'
+            content = f'{sentence}\n{calendar} \n{weather}\n{history}\n{news}'
             return content
         except:
             return '今日推送获取失败'
