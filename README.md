@@ -95,6 +95,13 @@
 * appToken填入```  AT_Cxj40nGcDr3fgjLe7oDlzyzE2EuITmWX  ```
 * UID获取方式和前面说的一样
 
+
+## 获取app_id和app_secret（可选）
+* 在微信小程序“电点科技”上“我的”“查看APPID”可获得（非广告，只是用到了他的API）
+* 如果不填写此项仅能获取每日诗词、一言、语录和毒鸡汤，填写后还会有万年历、芜湖天气、历史上的今天、和每日新闻
+
+
+
 #### 消息显示
 ![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/xinxineir.png)
     
