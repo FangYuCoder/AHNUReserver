@@ -80,13 +80,14 @@
 ### 获取```  appToken  ```和```  uids  ```
 
 #### 1. 创建自己的应用，获取```  appToken  ```和```  uids  ```
-* 进入此[网站](https://wxpusher.dingliqc.com/docs/#/?apptokenid=%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%b8%94%e5%88%9b%e5%bb%ba%e5%ba%94%e7%94%a8&id=%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%b8%94%e5%88%9b%e5%bb%ba%e5%ba%94%e7%94%a8)根据指导创建应用并得到 ``` appToken```
+* 进入此[此网站](https://wxpusher.dingliqc.com/docs/#/?apptokenid=%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%b8%94%e5%88%9b%e5%bb%ba%e5%ba%94%e7%94%a8&id=%e6%b3%a8%e5%86%8c%e5%b9%b6%e4%b8%94%e5%88%9b%e5%bb%ba%e5%ba%94%e7%94%a8)根据指导创建应用并得到 ``` appToken```
 * 微信扫码订阅应用
-![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/wxpusher.png)
+![本地路径](img/wxpusher.png)
 
 * 在WxPusher消息推送平台微信公众号内获取UID
-![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/gongzonghao1.png)
-![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/gongzonghao2.png)
+
+![本地路径](img/getUID_Step1.png)
+![本地路径](img/getUID_Step2.png)
 
 
 #### 2. 使用我创建的应用，获取```  appToken  ```和```  uids  ```
@@ -103,7 +104,7 @@
 
 
 ### 消息显示
-![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/xinxineir.png)
+![本地路径](img/PushExample.jpg)
     
 
 ## Window上定时任务
@@ -111,7 +112,7 @@
 2. ``` 关键说明 ```
 > 1. 图中的程序或脚本选项选择python解释器的python.exe文件
 > 2. 起始于参数是```Reserve.py```所在的文件夹，添加参数就是“Reserve.py”
-3. ![本地路径](https://gitee.com/liuliuliuyuyuy/ahnulibrary-operation-guide/raw/master/img/dingshirenwu.png)
+3. ![本地路径](img/TaskScheduler.png)
 
 ## 避免被发现是脚本的一些优化
 1. 经过学长和同学的提醒，使用此脚本可能会造成账号被封，怎么检测的我还不太清楚
