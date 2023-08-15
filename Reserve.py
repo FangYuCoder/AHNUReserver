@@ -167,15 +167,8 @@ class WINXIN:
         self.INFO = kwargs
 
     def send(self):
-        # 推送内容
-        if self.INFO['account'] == '20112001120':
-            nickname = '丘~预约成功了哦'
-        elif self.INFO['account'] == '20111304054':
-            nickname = '超超~预约成功了哦'
-        elif self.INFO['account'] == '20112001347':
-            nickname = '钰~预约成功了哦'
-        else:
-            nickname = self.INFO['account']
+        # 推送称呼
+        nickname = self.INFO['account']
         # 座位号
         seatid = self.INFO['sid']
 
