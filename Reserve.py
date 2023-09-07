@@ -109,7 +109,7 @@ class Reserve:
             'hfurl': ''
         }
 
-        login = self.session.post(postUrl, data=postData)
+        login = self.session.post(postUrl, data=postData,headers=header)
 
         if '个人中心' in login.content.decode():
             logging.info('Login successful!')
