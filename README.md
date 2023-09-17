@@ -97,10 +97,11 @@
 
 ## Window上定时任务
 1. 定时任务设置请根据该[指导](http://t.csdn.cn/eEe4t)
-2. ``` 关键说明 ```
+2. 关键说明
 > 1. 图中的程序或脚本选项选择python解释器的python.exe文件
 > 2. 起始于参数是```Reserve.py```所在的文件夹，添加参数就是“Reserve.py”（即文件名带后缀）
 3. 添加参数示例
+
 ![本地路径](img/TaskScheduler.png)
 
 ## 避免被发现是脚本的一些优化
