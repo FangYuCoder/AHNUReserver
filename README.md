@@ -26,7 +26,7 @@
 * requests
 * json
 * datetime
-* wxpusher（用于微信推送）（通过 pip install -U wxpusher 进行安装）
+* wxpusher（用于微信推送）（通过 `pip install -U wxpusher` 进行安装）
 * logging
 
 
