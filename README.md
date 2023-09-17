@@ -3,9 +3,13 @@
 > **2023年8月3日完成。**
 
 ### 特别说明
-1. 项目在此项目的基础上开发```  https://github.com/yangchnet/AHNUReserve  ```和
+1. 项目在此项目的基础上开发
+```  https://github.com/yangchnet/AHNUReserve  ```和
 ```  https://github.com/liushiyangstd/AHNULibrary ```
-2. 具体变化
+2. 本项目在Gitee和GitHub对应项目分别为（GitHub图片显示不出，可到Gitee查看）
+> * [Gitee](https://gitee.com/FangYuCoder/AHNULibraryReserve)
+> * [GitHub](https://github.com/FangYuCoder/AHNUReserve)
+3. 具体变化
 > * 最新添加了预约多个用户的功能，并提高了容错率（个人有错误只会在log中显示，不会影响到其他人的预约）
 > * 修改邮箱推送为微信推送
 > * 增加了预约楼层，具体增加了图书馆2楼，图书馆3、4楼公共空间的座位（以前只可预约3、4楼的部分位置）
