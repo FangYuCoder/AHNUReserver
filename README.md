@@ -23,7 +23,7 @@
 * json
 * smtplib
 * datetime
-* wxpusher（用于微信推送）
+* wxpusher（用于微信推送）（通过 pip install -U wxpusher 进行安装）
 * logging
 
 
@@ -86,7 +86,7 @@
 ![本地路径](img/getUID_Step2.png)
 
 
-#### 2. 使用我创建的应用，获取```  appToken  ```和```  uids  ```
+#### 2. 使用已创建的应用，获取```  appToken  ```和```  uids  ```
 * 关注WxPusher消息推送平台微信公众号
 * 在微信中打开链接 ``` https://wxpusher.zjiecode.com/wxuser/?type=1&id=44774#/follow ```
 * appToken填入```  AT_Cxj40nGcDr3fgjLe7oDlzyzE2EuITmWX  ```
