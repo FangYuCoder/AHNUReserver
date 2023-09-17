@@ -17,6 +17,17 @@ client_path = "./clients"
 
 logging.basicConfig(filename=fileloc, level=logging.DEBUG,
                     format=' %(asctime)s - %(levelname)s- %(message)s')
+header = {
+    # 设定报文头
+    'Host': 'libzwxt.ahnu.edu.cn',
+    'Origin': 'http://libzwxt.ahnu.edu.cn',
+    'Referer': 'http://libzwxt.ahnu.edu.cn/SeatWx/Seat.aspx?fid=3&sid=1438',
+    'User-Agent': "Mozilla/5.0 (Linux; Android 12; M2006J10C Build/SP1A.210812.016; wv) \
+                AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/107.0.5304.141 Mobile Safari/537.36 XWEB/5061 \
+                MMWEBSDK/20230303 MMWEBID/534 MicroMessenger/8.0.34.2340(0x2800225D) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64;",
+    'X-AjaxPro-Method': 'AddOrder',
+}
+
 
 # 程序随机睡眠 单位：秒
 def randSleep(least, most):
@@ -50,16 +61,6 @@ class Reserve:
             self.sid = self.convert(self.info['sid'])
             # 开始预约
             logging.info('Begin to reserve...')
-            header = {
-                # 设定报文头
-                'Host': 'libzwxt.ahnu.edu.cn',
-                'Origin': 'http://libzwxt.ahnu.edu.cn',
-                'Referer': 'http://libzwxt.ahnu.edu.cn/SeatWx/Seat.aspx?fid=3&sid=1438',
-                'User-Agent': "Mozilla/5.0 (Linux; Android 12; M2006J10C Build/SP1A.210812.016; wv) \
-                AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/107.0.5304.141 Mobile Safari/537.36 XWEB/5061 \
-                MMWEBSDK/20230303 MMWEBID/534 MicroMessenger/8.0.34.2340(0x2800225D) WeChat/arm64 Weixin NetType/4G Language/zh_CN ABI/arm64;",
-                'X-AjaxPro-Method': 'AddOrder',
-            }
             reserveUrl = 'http://libzwxt.ahnu.edu.cn/SeatWx/ajaxpro/SeatManage.Seat,SeatManage.ashx'
             reserverData = {
                 'atDate': TOMORROW,
@@ -72,21 +73,20 @@ class Reserve:
             # 尝试进行预约
             reserve = self.session.post(reserveUrl, data=json.dumps(reserverData), headers=header)
             if '成功' in reserve.text:
-                logging.info(reserve.text)
-                logging.info('Booking successful! The seat number is {0}'.format(self.info['sid']))
+                logging.info('Booking successful! The seat number is {0}\n'.format(self.info['sid']))
                 winxin = WINXIN(self.info)
                 winxin.send()
 
             if '预约成功' not in reserve.text:
                 # 服务器时间不一致
                 if '提前' in reserve.text:
-                    logging.info('Not at the scheduled time!\n')
+                    logging.info('Not at the scheduled time!')
                 if '冲突' or '重复' in reserve.text:
-                    logging.warning('Seat conflict, booking failed!\n')
+                    logging.warning('Seat conflict, booking failed!')
                 if '二次' in reserve.text:
-                    logging.info('Your second appointment time interval is too short!\n')
+                    logging.info('Your second booking time interval is too short!')
                 if '提前' not in reserve.text and '冲突' not in reserve.text and '重复' not in reserve.text and '二次' not in reserve.text:
-                    logging.error('Unknown reason, booking unsuccessful, please check the logs and data settings!!!\n')
+                    logging.error('Unknown reason, booking unsuccessful, please check the logs and data settings!!!')
 
         except BaseException as e:
             logging.error(e)
@@ -105,14 +105,16 @@ class Reserve:
             '__EVENTVALIDATION': '/wEWBQK1odvtBQLyj/OQAgKXtYSMCgKM54rGBgKj48j5D4sJr7QMZnQ4zS9tzQuQ1arifvSWo1qu0EsBRnWwz6pw',
             'tbUserName': self.info['account'],
             'tbPassWord': self.info['password'],
-            'Button1': '登 录',
+            'Button1': '登 录  ',
             'hfurl': ''
         }
 
-        login = self.session.post(postUrl, data=postData,headers=header)
+        login = self.session.post(postUrl, data=postData, headers=header)
 
         if '个人中心' in login.content.decode():
             logging.info('Login successful!')
+        else:
+            logging.info('Login failed!')
 
     @staticmethod
     def convert(seat_code):  # nsk3004
@@ -167,7 +169,6 @@ class WINXIN:
         self.INFO = kwargs
 
     def send(self):
-        # 推送称呼
         nickname = self.INFO['account']
         # 座位号
         seatid = self.INFO['sid']
@@ -175,10 +176,10 @@ class WINXIN:
         try:
             # 每日一句
             daily = GetSend()
-            dailyContent = daily.summary(uids=self.INFO['uids'])
-            content = f"{nickname}\n\n您明天的座位已经预约完成！\n预约座位编号：{seatid}\n预约时间：{self.INFO['st']}~{self.INFO['et']}\n\n{dailyContent}"
+            dailyContent = daily.summary()
+            content = f"{nickname}明天的座位{seatid}预约成功！\n预约时间：{TOMORROW + self.INFO['st']}~{self.INFO['et']}\n\n{dailyContent}"
         except:
-            content = f"{nickname}\n\n您明天的座位已经预约完成！\n预约座位编号：{seatid}\n预约时间：{self.INFO['st']}~{self.INFO['et']}"
+            content = f"{nickname}明天的座位{seatid}预约成功！\n预约时间：{self.INFO['st']}~{self.INFO['et']}"
             logging.info('Failed to retrieve daily push, please check the log and code for error details!\n')
         try:
             WxPusher.send_message(
@@ -188,30 +189,24 @@ class WINXIN:
                 token=appToken,
                 topic_ids=[]
             )
-            logging.info('Appointment successful, message has been sent!\n')
+            logging.info('Message of successful appointment has been sent!')
         except:
-            logging.info('Message sending failed, appToken may not be configured.\n')
+            logging.info('Message sending failed, appToken may not be configured.')
 
 
 if __name__ == '__main__':
-    try:
-        push1 = GetSend()
-        push1.msgPush()
-        logging.info('Daily push has been sent.\n')
-    except:
-        logging.error('Non-booking code section, daily push message error, reason unknown!\n')
-
     # 预约部分
-    randSleep(120, 240)
+    randSleep(120, 420)
     clients = getClients(client_path)
+    random.shuffle(clients)  # 打乱数组顺序
     try:
         for i in range(len(clients)):
             try:
-                randSleep(60, 120)
+                randSleep(60, 240)
                 reserve = Reserve(**clients[i])
                 reserve.reserve()
             except:
-                logging.info(f'Account {clients[i]["account"]} failed to reserve...reason unkown\n')
+                logging.info(f'Account {clients[i]["account"]} failed to reserve...reason unkown')
         logging.info('Today\'s appointment booking is over.\n\n\n\n\n')
     except:
-        logging.error('Appointment code execution failed, reason unknown.\n')
+        logging.error('Appointment code execution failed, reason unknown.')
