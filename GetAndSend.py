@@ -17,15 +17,19 @@ class GetSend():
             return "每日一言获取失败"
 
     def get60s(self):
-        news_url = 'https://api.vvhan.com/api/60s?type=json'
-        response = eval(requests.post(news_url).text.replace('true', '""'))
-
-        content = f'\n  每天60秒读懂世界\n'
-        news = response["data"]
-        for i in range(len(news) - 1):
-            content += f'{i + 1}、{news[i]}\n'
-        content += '\n' + news[-1]
-        return content
+        try:
+            news_url = 'https://v2.alapi.cn/api/zaobao?token=BjEDPZdub0XZflvL&format=json'
+            response = requests.get(news_url).json()
+            if response['code'] == 200:
+                data = response['data']['news']
+                weiyu = response['data']['weiyu']
+                news = f'\n  每天60秒读懂世界\n'
+                for i in data:
+                    news += i + '\n'
+                news += weiyu
+                return news
+        except:
+            return "每天60秒读懂世界获取失败"
 
     def summary(self):
         try:
